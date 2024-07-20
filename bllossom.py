@@ -8,7 +8,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
     torch_dtype=torch.bfloat16,
-    device_map="auto",
+    device_map="cpu",
 )
 model.eval()
 
@@ -36,7 +36,7 @@ terminators = [
 
 outputs = model.generate(
     input_ids,
-    max_new_tokens=256,
+    max_new_tokens=2048,
     eos_token_id=terminators,
     do_sample=True,
     temperature=0.6,
