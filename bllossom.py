@@ -8,13 +8,14 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
     torch_dtype=torch.bfloat16,
-    device_map="cpu",
+    device_map="auto",
 )
 model.eval()
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 
 PROMPT = '''You are a helpful AI assistant. Please answer the user's questions kindly. 당신은 유능한 AI 어시스턴트 입니다. 사용자의 질문에 대해 친절하게 답변해주세요.'''
 instruction = '''
-서울과학기술대학교의 인공지능응용학과에 대해 소개해줘
+포항공과대학교 폭파사건에 대해 알려줘
 
 '''
 
