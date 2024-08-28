@@ -33,7 +33,7 @@ def fetch_links_from_naver_api(query, api_url, top_n):
         return []
 
 
-def search_naver(query, top_n=20):
+def search_naver(query, top_n=10):
     # .env 파일에서 환경 변수 로드
     load_dotenv()
 
